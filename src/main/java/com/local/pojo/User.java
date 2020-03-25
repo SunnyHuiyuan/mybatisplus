@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.InputStream;
 import java.util.Date;
 
 /**
@@ -36,6 +37,10 @@ public class User {
 
     @Version    // 代表这是一个乐观锁
     private Integer version;
+
+    // 注意： delete 是mysql关键字   所以字段名设为deleted
+    @TableLogic    // 逻辑删除
+    private Integer deleted;
 
     //字段添加填充内容
     @TableField(fill = FieldFill.INSERT)

@@ -132,7 +132,7 @@ class MybatisPlusApplicationTests {
     //测试删除
     @Test
     public void testDeleteById() {
-        userMapper.deleteById(6L);
+        userMapper.deleteById(1L);
     }
 
     //通过id批量删除
@@ -145,7 +145,7 @@ class MybatisPlusApplicationTests {
     @Test
     public void testDeleteByMap() {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("name", "Tom");
+        map.put("name", "Jack");
         userMapper.deleteByMap(map);
     }
 
