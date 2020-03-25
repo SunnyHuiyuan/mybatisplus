@@ -1,5 +1,6 @@
 package com.local;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.local.mapper.UserMapper;
 import com.local.pojo.User;
 import org.junit.jupiter.api.Test;
@@ -115,5 +116,37 @@ class MybatisPlusApplicationTests {
     }
 
     // 测试分页查询
+    @Test
+    public void testPage() {
+        // 参数一： 当前页
+        // 参数二： 页面大小
+        Page<User> page = new Page<>(1, 5);
+        userMapper.selectPage(page, null);
+
+        page.getRecords().forEach(System.out::println);
+
+        //打印总数
+        System.out.println(page.getTotal());
+    }
+
+    //测试删除
+    @Test
+    public void testDeleteById() {
+        userMapper.deleteById(6L);
+    }
+
+    //通过id批量删除
+    @Test
+    public void testDeleteBatchId() {
+        userMapper.deleteBatchIds(Arrays.asList(4L, 5L));
+    }
+
+    //通过map 按条件删除
+    @Test
+    public void testDeleteByMap() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("name", "Tom");
+        userMapper.deleteByMap(map);
+    }
 
 }
